@@ -79,5 +79,5 @@ def inc():
     counter += 1
 
 if __name__ == "__main__":
-    main()
+    
 #5test 
