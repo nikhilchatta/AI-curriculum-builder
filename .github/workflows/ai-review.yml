@@ -1,0 +1,22 @@
+name: AI Code Review
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  ai-code-review-gate:
+    uses: nikhilchatta/AI-CodeReview-Assistant/.github/workflows/ai-code-review.yml@main
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    with:
+      max_files: 20
+      file_extensions: .py,.ts,.tsx,.js,.jsx,.scala,.sql,.tf
+      timeout_minutes: 15
+
+    secrets:
+      AI_AGENT_API_URL: ${{ secrets.AI_AGENT_API_URL }}
+      AI_AGENT_API_KEY: ${{ secrets.AI_AGENT_API_KEY }}
